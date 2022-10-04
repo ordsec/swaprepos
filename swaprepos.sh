@@ -29,13 +29,14 @@ elif [ "$1" = -k ] || [ "$1" = --kali ]; then
     swapToKali
 else
     echo "Usage:"
-    echo "-u or --ubuntu to change to ubuntu apt repos"
-    echo "-k or --kali to change back to default kali repos"
+    echo "./swaprepos.sh -u or --ubuntu to change to ubuntu apt repos"
+    echo "./swaprepos.sh -k or --kali to change back to default kali repos"
     exit
 fi
 
 apt-get update
 
+echo "Current sources files in /etc/apt:"
 ls /etc/apt | grep sources
 
 echo "Completed successfully!"
