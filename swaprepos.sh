@@ -16,7 +16,7 @@ swapToUbuntu () {
 }
 
 swapToKali () {
-    if [ ! -e /etc/apt/ubuntu-sources.list ]; then
+    if [ ! -e /etc/apt/sources.list.bak ]; then
         echo "File /etc/apt/ubuntu-sources.list not found!"
         echo "Have you changed the repos back to Kali?"
         echo "If running for the first time, use the -u or --ubuntu flag."
