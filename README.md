@@ -28,4 +28,12 @@ Use this flag if this is your first time running this script. This will download
 
 #### `-k`
 
-Use this flag once you're done installing what you needed from Ubuntu repos (gufw, snort). It will save Ubuntu repos in a separate file and move default Kali repos from the back-up file to the original `sources.list` file as if nothing has happened. Then the script will run `apt-get-update`. 
+Use this flag once you're done installing what you needed from Ubuntu repos (gufw, snort). It will save Ubuntu repos in a separate file and move default Kali repos from the back-up file to the original `sources.list` file as if nothing has happened. Then the script will run `apt-get-update`.
+
+### Example use
+
+While in the folder with the script, type:
+
+`sudo ./swaprepos.sh -u`
+`sudo apt-get install -y gufw` (or `snort` depending on your situation)
+`sudo ./swaprepos.sh -k`
