@@ -1,6 +1,8 @@
 #!/bin/bash
 
 swapToUbuntu () {
+    # if the back-up file already exists,
+    # repos have already been swapped
     if [ -e /etc/apt/sources.list.bak ]; then
         echo "Looks like you have already swapped your repos to Ubuntu's!"
         echo "Try using the -k flag to change back to Kali repos."
@@ -16,9 +18,10 @@ swapToUbuntu () {
 }
 
 swapToKali () {
+    # if the back-up file isn't there, 
+    # we've already changed back to Kali repos
     if [ ! -e /etc/apt/sources.list.bak ]; then
-        echo "File /etc/apt/ubuntu-sources.list not found!"
-        echo "Have you changed the repos back to Kali?"
+        echo "Have you already changed the repos back to Kali?"
         echo "If running for the first time, use the -u or --ubuntu flag."
         exit
     fi
