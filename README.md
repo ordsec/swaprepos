@@ -35,5 +35,7 @@ Use this flag once you're done installing what you needed from Ubuntu repos (guf
 While in the folder with the script, type:
 
 `sudo ./swaprepos.sh -u`
+
 `sudo apt-get install -y gufw` (or `snort` depending on your situation)
+
 `sudo ./swaprepos.sh -k`
