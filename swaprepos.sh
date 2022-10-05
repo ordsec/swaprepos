@@ -12,9 +12,16 @@ swapToUbuntu () {
     echo "Changing apt repos to Ubuntu..."
     mv /etc/apt/sources.list /etc/apt/sources.list.bak
     find /var/lib/apt/lists -type f -exec rm {} \;
-    wget https://gist.githubusercontent.com/ishad0w/788555191c7037e249a439542c53e170/raw/3822ba49241e6fd851ca1c1cbcc4d7e87382f484/sources.list -O /etc/apt/sources.list
-    apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 3B4FE6ACC0B21F32
-    apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 871920D1991BC93C
+    # only download ubuntu sources and register keys
+    # if the ubuntu-sources.list file isn't already there
+    # (i.e. first time running the script)
+    if [ -e /etc/apt/ubuntu-sources.list ]; then
+        mv /etc/apt/ubuntu-sources.list /etc/apt/sources.list
+    else
+        wget https://gist.githubusercontent.com/ishad0w/788555191c7037e249a439542c53e170/raw/3822ba49241e6fd851ca1c1cbcc4d7e87382f484/sources.list -O /etc/apt/sources.list
+        apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 3B4FE6ACC0B21F32
+        apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 871920D1991BC93C
+    fi
 }
 
 swapToKali () {
