@@ -1,6 +1,12 @@
 #!/bin/bash
 
 swapToUbuntu () {
+    if [ -e /etc/apt/sources.list.bak ]; then
+        echo "Looks like you have already swapped your repos to Ubuntu's!"
+        echo "Try using the -k flag to change back to Kali repos."
+        exit
+    fi
+
     echo "Changing apt repos to Ubuntu..."
     mv /etc/apt/sources.list /etc/apt/sources.list.bak
     find /var/lib/apt/lists -type f -exec rm {} \;
@@ -13,6 +19,7 @@ swapToKali () {
     if [ ! -e /etc/apt/ubuntu-sources.list ]; then
         echo "File /etc/apt/ubuntu-sources.list not found!"
         echo "Have you changed the repos back to Kali?"
+        echo "If running for the first time, use the -u or --ubuntu flag."
         exit
     fi
 
